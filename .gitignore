@@ -1,0 +1,22 @@
+# 构建产物与部署目录
+build/
+dist/
+installer_output/
+_toolchain/
+*.o
+*.obj
+*.lib
+*.def
+*.dll
+*.exe
+*.pdb
+
+# 签名证书与签名脚本（含私钥与口令，禁止公开）
+certs/
+sign_helper.ps1
+
+# 个人交接文档与临时文件
+PROGRESS.md
+debug.log
+目录树.txt
+*.tmp

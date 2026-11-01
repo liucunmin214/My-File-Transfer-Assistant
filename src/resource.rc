@@ -1,0 +1,55 @@
+﻿/*
+ * My File Transfer Assistant 资源文件
+ */
+#include <windows.h>
+
+1 ICON "..\\resources\\icon.ico"
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "app.manifest"
+
+#define VER_FILEVERSION             1,2,0,0
+#define VER_FILEVERSION_STR         "V1.2.0.0\0"
+#define VER_PRODUCTVERSION          1,2,0,0
+#define VER_PRODUCTVERSION_STR      "V1.2.0.0\0"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION    VER_FILEVERSION
+ PRODUCTVERSION VER_PRODUCTVERSION
+ FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
+ FILEFLAGS      0L
+ FILEOS         VOS_NT_WINDOWS32
+ FILETYPE       VFT_APP
+ FILESUBTYPE    VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403B0"
+        BEGIN
+            VALUE "CompanyName",      "MY 工作室"
+            VALUE "FileDescription",  "My File Transfer Assistant"
+            VALUE "FileVersion",      VER_FILEVERSION_STR
+            VALUE "InternalName",     "MyFileTransferAssistant"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 MY 工作室"
+            VALUE "OriginalFilename", "MyFileTransferAssistant.exe"
+            VALUE "ProductName",      "My File Transfer Assistant"
+            VALUE "ProductVersion",   VER_PRODUCTVERSION_STR
+        END
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",      "MY Studio"
+            VALUE "FileDescription",  "My File Transfer Assistant"
+            VALUE "FileVersion",      VER_FILEVERSION_STR
+            VALUE "InternalName",     "MyFileTransferAssistant"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 MY Studio"
+            VALUE "OriginalFilename", "MyFileTransferAssistant.exe"
+            VALUE "ProductName",      "My File Transfer Assistant"
+            VALUE "ProductVersion",   VER_PRODUCTVERSION_STR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0804, 0x03B0
+                            , 0x0409, 0x04B0
+    END
+END
+

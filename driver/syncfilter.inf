@@ -1,0 +1,60 @@
+;
+; syncfilter.inf - DesktopSync 内核过滤驱动安装信息
+; 仅在用户启用"驱动增强模式"时安装；缺省情况下应用使用纯用户态 ReadDirectoryChanges
+;
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = FileSystemFilter
+ClassGuid   = {5D1E0F8C-7B59-4E0F-8F47-9F3D9F1B2C66}
+Provider    = %ProviderName%
+CatalogFile = syncfilter.cat
+DriverVer   = 01/01/2026,1.0.0.0
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 12  ; %SystemRoot%\System32\drivers
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+syncfilter.sys = 1,,
+
+[DefaultInstall.NTamd64]
+OptionDesc  = %ServiceDesc%
+CopyFiles   = SyncFilter.DriverFiles
+
+[DefaultInstall.NTamd64.Services]
+AddService  = SyncFilter,,SyncFilter.Service,,SyncFilter.EventLog
+
+[SyncFilter.DriverFiles]
+syncfilter.sys
+
+[SyncFilter.Service]
+DisplayName    = %ServiceName%
+Description    = %ServiceDesc%
+ServiceType    = 2    ; SERVICE_FILE_SYSTEM_DRIVER
+StartType      = 3    ; SERVICE_DEMAND_START
+ErrorControl   = 1    ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\syncfilter.sys
+LoadOrderGroup = "FSFilter Activity Monitor"
+AddReg         = SyncFilter.AddReg
+
+[SyncFilter.AddReg]
+HKR,"Instances","DefaultInstance",0x00000000,"SyncFilter Default Instance"
+HKR,"Instances\SyncFilter Default Instance","Altitude",0x00000000,"360500"
+HKR,"Instances\SyncFilter Default Instance","Flags",0x00000000,0x0
+
+[SyncFilter.EventLog]
+AddReg = SyncFilter.EventLog.AddReg
+
+[SyncFilter.EventLog.AddReg]
+HKR,,EventMessageFile,0x00020000,%11%\syncfilter.sys
+HKR,,TypesSupported,0x00010001,7
+
+[Strings]
+ProviderName    = "DesktopSync Project"
+DiskName        = "DesktopSync Driver Disk"
+ServiceName     = "SyncFilter"
+ServiceDesc     = "DesktopSync 文件系统过滤驱动（增强实时同步）"
