@@ -1,6 +1,8 @@
 # 构建产物与部署目录
 build/
 dist/
+**/bin/
+**/obj/
 installer_output/
 _toolchain/
 *.o

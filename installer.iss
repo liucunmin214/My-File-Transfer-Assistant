@@ -4,9 +4,9 @@
 
 #define AppName "My File Transfer Assistant"
 #define AppPublisher "ModularData"
-#define AppVersion "V1.2.0"
+#define AppVersion "V1.3.0"
 #define AppExeName "MyFileTransferAssistant.exe"
-#define AppSetupName "Setup_MyFileTransferAssistant_V1.2.0"
+#define AppSetupName "Setup_MyFileTransferAssistant_V1.3.0"
 #define AppRegKey "Software\My File Transfer Assistant"
 #ifndef DistDir
 #define DistDir "dist\MyFileTransferAssistant"
@@ -42,11 +42,7 @@ Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional icons:"; Flags: unchecked
 
 [Files]
-Source: "{#DistDir}\MyFileTransferAssistant.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#DistDir}\sync_core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#DistDir}\app.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#DistDir}\Assets\app.ico"; DestDir: "{app}\Assets"; Flags: ignoreversion
-Source: "{#DistDir}\Config\config.json"; DestDir: "{app}\Config"; Flags: ignoreversion
+Source: "{#DistDir}\*"; DestDir: "{app}"; Excludes: "Setup_MyFileTransferAssistant_*.exe,*.pdb"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppExeName}"; IconFilename: "{app}\app.ico"; WorkingDir: "{app}"
